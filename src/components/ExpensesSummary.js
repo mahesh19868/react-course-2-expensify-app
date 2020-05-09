@@ -5,17 +5,11 @@ import getExpensesTotal from '../selectors/expenses-total';
 import numeral from 'numeral';
 
 
-export const ExpensesSummary = (props) => {
-    let message;    
-    if(props.expenseCount === 1){
-        message = <p>Viewing { props.expenseCount } expense totalling { props.expenseTotal }</p>;
-    }
-    else if(props.expenseCount > 1) {
-        message = <p>Viewing { props.expenseCount } expenses totalling { props.expenseTotal }</p>;
-    }
+export const ExpensesSummary = ({expenseCount,expenseTotal}) => {
+    const messageWord = (expenseCount === 1) ? 'expense': 'expenses';
     return (
         <div>
-            {message}
+           <h1>Viewing {expenseCount} {messageWord} totalling {expenseTotal} </h1>
         </div>
     );   
 }
